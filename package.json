@@ -1,10 +1,10 @@
 {
-  "name": "indy-workshop",
+  "name": "lets-watch",
   "version": "0.0.0",
-  "description": "Simple Project to demostrate Node.js",
+  "description": "Synch Youtube Videos",
   "main": "app.js",
-  "author": "Richard Key",
-  "license": "MIT",
+  "author": "Joseph Ingram",
+  "license": "",
   "dependencies" : {
     "express": "~3.0.0",
     "socket.io" : "~0.9.10"
