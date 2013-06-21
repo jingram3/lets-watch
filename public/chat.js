@@ -1,7 +1,7 @@
 function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById("myytplayer");
-    //var surl = 'http://localhost:5000/'; 
-    var surl = 'http://mighty-brook-9138.herokuapp.com/';
+    var surl = 'http://localhost:5000/'; 
+    //var surl = 'http://mighty-brook-9138.herokuapp.com/';
     Video.initialize(surl);
 }
 
@@ -27,9 +27,9 @@ function onytplayerStateChange(newState) {
     //Adds a new message to the chat.
     add : function(data) {
 	console.log('we got the state: ' + data.state);
-	if(data.state == 1)
+	if(data.state == 1 && ytplayer.getPlayerState != 1)
 	    ytplayer.playVideo();
-	else
+	else if(data.state == 2 && ytplayer.getPlayerState != 2)
 	    ytplayer.pauseVideo();
     },
  
