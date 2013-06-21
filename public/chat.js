@@ -1,19 +1,24 @@
 function onYouTubePlayerReady(playerId) {
-  ytplayer = document.getElementById("myytplayer");
+    ytplayer = document.getElementById("myytplayer");
+    //var surl = 'http://localhost:5000/'; 
+    var surl = 'http://mighty-brook-9138.herokuapp.com/';
+    Video.initialize(surl);
 }
 
-//Create a chat module to use.
+function onytplayerStateChange(newState) {
+    console.log('new state: ' + newState);
+    Video.send(newState);
+}
+
+//Create a youtube module to use.
 (function () {
-  window.Chat = {
+  window.Video = {
     socket : null,
   
     initialize : function(socketURL) {
       this.socket = io.connect(socketURL);
-	
-      var init = new Date().getTime(); 
-      $('#message').keyup(function(evt) {
-	Chat.send();
-      });
+
+      ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
 
       //Process any incoming messages
       this.socket.on('new', this.add);
@@ -21,29 +26,22 @@ function onYouTubePlayerReady(playerId) {
 
     //Adds a new message to the chat.
     add : function(data) {
-      var name = data.name || 'anonymous';
-      var msg = $('<div class="msg"></div>')
-        //.append('<span class="name">' + name + '</span>: ')
-        .append('<span class="text">' + data.msg + '</span>');
-	  
-	  //$('#textarea').val('');
-
-      $('#message')
-        .val(data.msg);
-        //.animate({scrollTop: $('#messages').prop('scrollHeight')}, 0);
+	console.log('we got the state: ' + data.state);
+	if(data.state == 1)
+	    ytplayer.playVideo();
+	else
+	    ytplayer.pauseVideo();
     },
  
     //Sends a message to the server,
-    //then clears it from the textarea
-    send : function() {
+    send : function(newState) {
       this.socket.emit('msg', {
-        name: $('#name').val(),
-        msg: $('#message').val()
+          state: newState
       });
-
-      //$('#message').val('');
 
       return false;
     }
   };
 }());
+
+
