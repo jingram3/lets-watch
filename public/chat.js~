@@ -1,7 +1,3 @@
-function onYouTubePlayerReady(playerId) {
-  ytplayer = document.getElementById("myytplayer");
-}
-
 //Create a chat module to use.
 (function () {
   window.Chat = {

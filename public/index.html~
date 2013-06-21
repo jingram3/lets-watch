@@ -31,7 +31,6 @@
                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
 
   </script>
-<a href="javascript:void(0);" onclick="play();">Play</a>
     <script type="text/javascript">
       $(document).ready(function() {
         Chat.initialize('http://mighty-brook-9138.herokuapp.com/');
