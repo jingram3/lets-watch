@@ -2,8 +2,8 @@ function onYouTubePlayerReady(playerId) {
     ytplayer = document.getElementById("myytplayer");
     ytplayer.playVideo();
     ytplayer.pauseVideo();
-    var surl = 'http://localhost:5000/'; 
-    //var surl = 'http://mighty-brook-9138.herokuapp.com/';
+    //var surl = 'http://localhost:5000/'; 
+    var surl = 'http://mighty-brook-9138.herokuapp.com/';
     Video.initialize(surl);
 }
 
