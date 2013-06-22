@@ -8,7 +8,10 @@ server.listen(port);
 app.use("/", express.static(__dirname + '/public'));
 
 io.sockets.on('connection', function (socket) {
-  socket.on('msg', function (data) {
-    io.sockets.emit('new', data);
-  });
+    socket.on('msg', function (data) {
+	io.sockets.emit('newState', data);
+    });
+    socket.on('vid', function (id) {
+	io.sockets.emit('newVideo', id);
+    });
 });

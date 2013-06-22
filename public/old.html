@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Let's Watch</title>
+    <link rel="stylesheet",type="text/css" href="styles.css"/>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script type="text/javascript" src="chat.js"></script>
+  </head>
+  <body>
+  <div id="ytapiplayer">
+    You need Flash player 8+ and JavaScript enabled to view this video.
+  </div>
+  <input id="vidurl" name="url" type="text"/>
+  <input id="send" type="submit" value="Send"/>
+
+  <script type="text/javascript">
+
+    var params = { allowScriptAccess: "always" };
+    var atts = { id: "myytplayer" };
+    swfobject.embedSWF("http://www.youtube.com/v/ygI-2F8ApUM?enablejsapi=1&playerapiid=ytplayer&version=3",
+                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
+
+  </script>
+    <script type="text/javascript">
+      //$(document).ready(function() {
+        //Chat.initialize('http://mighty-brook-9138.herokuapp.com/');
+      //});
+    </script>
+  </body>
+</html>
